@@ -33,7 +33,7 @@ public class Axe : MonoBehaviour
         if (tape)
         {
             tape.TakeDamage(damage);
-            Destroy(gameObject); // ”ничтожаем после удара
+            Destroy(gameObject);
         }
 
     }
