@@ -58,6 +58,7 @@ public class ShieldDragManager : MonoBehaviour
             clampedX,
             currentlyDraggingShield.position.y,
             currentlyDraggingShield.position.z
+
         );
     }
 }
