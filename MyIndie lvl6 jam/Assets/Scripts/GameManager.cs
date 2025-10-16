@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float respawnDelay = 3f;  
 
     private bool waitingForAttack = false;
+    private int roundCount = 0;
 
     void Start()
     {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
+            roundCount++;
+            if (roundCount == 10) print("игрок победил");
             if (barrier != null)
                 barrier.SetActive(true);
 

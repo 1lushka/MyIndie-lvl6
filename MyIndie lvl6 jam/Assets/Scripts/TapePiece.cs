@@ -1,5 +1,6 @@
 using UnityEngine;
-using DG.Tweening; // обязательно! для DOShakePosition и т.д.
+using DG.Tweening;
+using UnityEngine.SceneManagement; // обязательно! для DOShakePosition и т.д.
 
 public class TapePiece : MonoBehaviour
 {
@@ -42,14 +43,15 @@ public class TapePiece : MonoBehaviour
     void Detach()
     {
         shakeTween?.Kill();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-            rb.AddForce(Vector3.up * 3f, ForceMode.Impulse);
-        }
+        //Rigidbody rb = GetComponent<Rigidbody>();
+        //if (rb != null)
+        //{
+        //    rb.isKinematic = false;
+        //    rb.AddForce(Vector3.up * 3f, ForceMode.Impulse);
+        //}
 
-        Destroy(gameObject, 5f);
+        //Destroy(gameObject, 5f);
     }
 }
