@@ -4,7 +4,6 @@ public class Axe : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private int damage = 1;
-
     private bool isThrown = false;
 
     private void Start()
@@ -20,21 +19,20 @@ public class Axe : MonoBehaviour
     {
         if (isThrown)
         {
-            transform.Translate(Vector3.forward * -speed * Time.deltaTime);
+            Vector3 targetPos = transform.position + transform.forward * -speed * Time.deltaTime;
+
+            ObjectMover.MoveTo(transform, targetPos);
         }
     }
 
-
-    void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision collision)
     {
         isThrown = false;
-        TapePiece tape = col.collider.GetComponent<TapePiece>();
-        if (tape == null) tape = col.collider.GetComponentInParent<TapePiece>();
-        if (tape)
+        TapePiece tape = collision.gameObject.GetComponent<TapePiece>();
+        if(tape == null) tape = collision.gameObject.GetComponentInParent<TapePiece>();
+        if(tape != null)
         {
             tape.TakeDamage(damage);
-            Destroy(gameObject);
         }
-
     }
 }
