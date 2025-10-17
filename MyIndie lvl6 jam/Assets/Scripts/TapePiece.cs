@@ -1,6 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.SceneManagement; // обязательно! для DOShakePosition и т.д.
+using UnityEngine.SceneManagement;
 
 public class TapePiece : MonoBehaviour
 {
@@ -12,15 +12,18 @@ public class TapePiece : MonoBehaviour
     [SerializeField] private int shakeVibrato = 20;
     [SerializeField] private float shakeRandomness = 90f;
 
-    private Tween shakeTween;
+    [Header("Damage Settings")]
+    [SerializeField] private float damageCooldown = 0.3f;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Shake();
-    }
+    private Tween shakeTween;
+    private float lastDamageTime = -999f;
 
     public void TakeDamage(int damage)
     {
+        if (Time.time - lastDamageTime < damageCooldown)
+            return;
+
+        lastDamageTime = Time.time;
         health -= damage;
 
         Shake();
@@ -44,14 +47,5 @@ public class TapePiece : MonoBehaviour
     {
         shakeTween?.Kill();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-        //Rigidbody rb = GetComponent<Rigidbody>();
-        //if (rb != null)
-        //{
-        //    rb.isKinematic = false;
-        //    rb.AddForce(Vector3.up * 3f, ForceMode.Impulse);
-        //}
-
-        //Destroy(gameObject, 5f);
     }
 }
