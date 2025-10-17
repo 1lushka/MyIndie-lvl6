@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a7872d39a9b080499e559cda2233ea5
+guid: 88fb9a9ebf3c0f248991fbd550575a6f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Knife
-    second: {fileID: 2100000, guid: 8f98eff09be6d804085186466bb20f36, type: 2}
+      name: TableWood
+    second: {fileID: 2100000, guid: 2035a0dcc8a83ee46a6af63ee6155812, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
