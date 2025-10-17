@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 3111993059530550807}
   m_Layer: 0
   m_Name: Tape
-  m_TagString: Untagged
+  m_TagString: Tape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,3 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  shakeDuration: 0.2
+  shakeStrength: 0.3
+  shakeVibrato: 20
+  shakeRandomness: 90
+  damageCooldown: 0.3

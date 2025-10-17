@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Shield
+  - Tape
   layers:
   - Default
   - TransparentFX
