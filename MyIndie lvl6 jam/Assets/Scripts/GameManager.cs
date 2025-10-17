@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float barrierScaleDuration = 0.3f;
 
     private bool waitingForAttack = false;
+    private bool canAttack = false;
     private int roundCount = 0;
     private Vector3 barrierOriginalScale;
 
@@ -33,20 +34,22 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
+
             roundCount++;
             if (roundCount == 10) print("игрок победил");
 
             if (barrier != null)
                 ShowBarrier();
 
+            
+
             enemyAI.MakeMove();
             waitingForAttack = true;
 
-            yield return new WaitUntil(() =>
-                Keyboard.current != null && Keyboard.current.enterKey.wasPressedThisFrame
-            );
+            yield return new WaitUntil(() => canAttack);
 
             waitingForAttack = false;
+            canAttack = false;
 
             enemyAI.StartAttack();
 
@@ -55,6 +58,11 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(respawnDelay);
         }
+    }
+
+    public void StartRound()
+    {
+        canAttack = true;
     }
 
     private void ShowBarrier()
