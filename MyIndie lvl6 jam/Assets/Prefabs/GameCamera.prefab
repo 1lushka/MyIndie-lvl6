@@ -121,8 +121,8 @@ MonoBehaviour:
       Time: 5
     Restrictions: 0
   TiltAxis:
-    Value: 27
-    Center: 27
+    Value: 15
+    Center: 15
     Range: {x: 15, y: 35}
     Wrap: 0
     Recentering:
