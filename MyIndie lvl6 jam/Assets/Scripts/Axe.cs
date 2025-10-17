@@ -8,7 +8,7 @@ public class Axe : MonoBehaviour
 
     private void Start()
     {
-        Throw();
+        //Throw();
     }
     public void Throw()
     {
