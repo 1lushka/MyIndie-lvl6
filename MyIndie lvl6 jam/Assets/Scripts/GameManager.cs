@@ -41,8 +41,6 @@ public class GameManager : MonoBehaviour
             if (barrier != null)
                 ShowBarrier();
 
-            
-
             enemyAI.MakeMove();
             waitingForAttack = true;
 

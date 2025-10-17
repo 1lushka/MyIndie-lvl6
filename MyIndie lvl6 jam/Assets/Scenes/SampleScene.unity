@@ -286,6 +286,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b068802b6cc9af94aa94b0593956dd11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHoverStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 89066543}
+        m_TargetAssemblyTypeName: Outline, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onHoverEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 89066543}
+        m_TargetAssemblyTypeName: Outline, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPull:
     m_PersistentCalls:
       m_Calls:
@@ -302,6 +332,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   cam: {fileID: 330585545}
+--- !u!114 &89066543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89066533}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0.8287672, b: 0, a: 1}
+  outlineWidth: 7.21
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &239199018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1648,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3055218124808252859, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07b1c0b230030a645aac8f5d5eaa703c, type: 2}
     - target: {fileID: 5784880940168634402, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1667,6 +1719,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2775403216772261889, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
       insertIndex: -1
       addedObject: {fileID: 89066538}
+    - targetCorrespondingSourceObject: {fileID: 2775403216772261889, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 89066543}
   m_SourcePrefab: {fileID: 100100000, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
 --- !u!1001 &6361858033157743563
 PrefabInstance:
