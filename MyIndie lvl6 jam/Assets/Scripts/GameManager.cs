@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.InputSystem;
 using DG.Tweening;
+using TMPro; 
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject barrier;
     [SerializeField] private Animator ropeAnimator;
     [SerializeField] private Animator handAnimator;
+    [SerializeField] private TextMeshPro waveText;
 
     [Header("Settings")]
     [SerializeField] private float respawnDelay = 3f;
-    [SerializeField] private float barrierMoveDistance = 2f; 
-    [SerializeField] private float barrierMoveDuration = 0.5f; 
-    [SerializeField] private float delayBeforeAttack = 1f; 
+    [SerializeField] private float barrierMoveDistance = 2f;
+    [SerializeField] private float barrierMoveDuration = 0.5f;
+    [SerializeField] private float delayBeforeAttack = 1f;
 
     private bool waitingForAttack = false;
     private bool canAttack = false;
@@ -25,9 +26,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (barrier != null)
-        {
             barrierOriginalPosition = barrier.transform.position;
-        }
+
+        UpdateWaveText();
 
         StartCoroutine(GameLoop());
     }
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             roundCount++;
+            UpdateWaveText();
+
             if (roundCount == 10)
                 print("игрок победил");
 
@@ -77,12 +80,21 @@ public class GameManager : MonoBehaviour
     {
         barrier.transform.DOMoveY(barrierOriginalPosition.y, barrierMoveDuration)
             .SetEase(Ease.InQuad);
-
     }
 
     private void HideBarrier()
     {
         barrier.transform.DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
             .SetEase(Ease.OutQuad);
+    }
+
+    private void UpdateWaveText()
+    {
+        if (waveText != null)
+        {
+            waveText.text = $"Волна {roundCount}";
+            waveText.DOFade(1f, 0.3f).From(0f);
+            waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
+        }
     }
 }

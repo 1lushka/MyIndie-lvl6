@@ -198,6 +198,7 @@ MonoBehaviour:
   barrier: {fileID: 396457203}
   ropeAnimator: {fileID: 396457211}
   handAnimator: {fileID: 1625600990}
+  waveText: {fileID: 0}
   respawnDelay: 3
   barrierMoveDistance: 25
   barrierMoveDuration: 0.5
