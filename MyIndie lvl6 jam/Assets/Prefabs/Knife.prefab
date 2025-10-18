@@ -34,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5840660558837298838}
-  - {fileID: 4145201674653633808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6557223741089105949
@@ -53,6 +52,8 @@ MonoBehaviour:
   maxSpeed: 30
   acceleration: 60
   damage: 1
+  target: {fileID: 0}
+  arcHeight: 2
   ropeHitParticles: {fileID: 25173453392198057, guid: f0f9aba5eebe5d64b96d7049fd48440d, type: 3}
   defaultHitParticles: {fileID: 5576287502626744145, guid: f6576b512519df84488c3dd961445ac3, type: 3}
   hitCooldown: 0.3
@@ -259,12 +260,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5001172664319545852}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.08}
+  m_LocalRotation: {x: 0.0000020042066, y: -0.7071067, z: 0.7071069, w: 0.0000018998983}
+  m_LocalPosition: {x: 0, y: -1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6998462733285164504}
+  m_Father: {fileID: 6288980828689035798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &354369800424767204
 TrailRenderer:
@@ -531,7 +532,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a7872d39a9b080499e559cda2233ea5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4145201674653633808}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a7872d39a9b080499e559cda2233ea5, type: 3}
 --- !u!4 &6288980828689035798 stripped
