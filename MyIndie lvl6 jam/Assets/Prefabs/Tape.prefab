@@ -214,19 +214,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c81f8c5e9faee419403332d3207ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
   health: 3
+  ropePieces:
+  - {fileID: 6350601297197341836}
+  - {fileID: 8695610355854731964}
   shakeDuration: 0.2
   shakeStrength: 0.3
   shakeVibrato: 20
   shakeRandomness: 90
   damageCooldown: 0.3
-  scaleTargets:
-  - {fileID: 6350601297197341836}
-  - {fileID: 8695610355854731964}
-  minYScaleAtZeroHP: 0.25
   scaleTweenDuration: 0.5
-  scaleEase: 4
 --- !u!1001 &5249446090207202215
 PrefabInstance:
   m_ObjectHideFlags: 0
