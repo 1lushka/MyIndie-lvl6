@@ -15,12 +15,14 @@ public class Axe : MonoBehaviour
     [SerializeField] private float hitCooldown = 0.3f;
 
     private bool isThrown = false;
+    private Animator anim;
     private float currentSpeed;
     private TrailRenderer trail;
     private float lastHitTime = -999f;
 
     private void Awake()
     {
+        anim= GetComponent<Animator>();
         trail = GetComponent<TrailRenderer>();
         if (trail == null) trail = GetComponentInChildren<TrailRenderer>();
         if (trail != null)
@@ -29,6 +31,8 @@ public class Axe : MonoBehaviour
 
     public void Throw()
     {
+        if (anim) anim.SetBool("Flying", true);
+
         isThrown = true;
         currentSpeed = startSpeed;
         if (trail != null)
@@ -53,6 +57,7 @@ public class Axe : MonoBehaviour
         lastHitTime = Time.time;
         isThrown = false;
 
+
         if (trail != null)
             trail.enabled = false;
 
@@ -63,11 +68,17 @@ public class Axe : MonoBehaviour
             tape.TakeDamage(damage);
             if (ropeHitParticles != null)
                 Instantiate(ropeHitParticles, collision.contacts[0].point, Quaternion.identity);
+            if (anim) anim.SetBool("Flying",false);
+            if (anim) anim.SetBool("InShield", false);
+
         }
         else
         {
             if (defaultHitParticles != null)
                 Instantiate(defaultHitParticles, collision.contacts[0].point, Quaternion.identity);
+            if (anim) anim.SetBool("InShield", true);
+            if (anim) anim.SetBool("Flying", false);
+
         }
     }
 }
