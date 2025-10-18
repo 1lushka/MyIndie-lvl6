@@ -21,6 +21,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+
     public void MakeMove()
     {
         if (tapePieces == null || tapePieces.Length == 0 || axes == null || axes.Length == 0)
