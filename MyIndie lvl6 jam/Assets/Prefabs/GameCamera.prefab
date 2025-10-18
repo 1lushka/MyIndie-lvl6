@@ -123,7 +123,7 @@ MonoBehaviour:
   TiltAxis:
     Value: 15
     Center: 15
-    Range: {x: 15, y: 35}
+    Range: {x: 5, y: 35}
     Wrap: 0
     Recentering:
       Enabled: 1
