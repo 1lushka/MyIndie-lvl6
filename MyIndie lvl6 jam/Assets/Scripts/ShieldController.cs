@@ -5,13 +5,31 @@ public class ShieldController : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private string targetTag = "Shield";
+
+    [Header("X Clamp (drag)")]
     [SerializeField] private float xMin = -5f, xMax = 5f;
-    [SerializeField] private float scaleMultiplier = 1.2f;  
-    [SerializeField] private float scaleDuration = 0.2f; 
+
+    [Header("Hover (while holding)")]
+    [Tooltip("Насколько поднять объект по Y во время удержания")]
+    [SerializeField] private float hoverHeight = 1.0f;
+    [SerializeField] private float liftDuration = 0.2f;
+    [SerializeField] private Ease liftEase = Ease.OutQuad;
+
+    [Header("Wobble (around Z while holding)")]
+    [Tooltip("Амплитуда покачивания в градусах (±по Z)")]
+    [SerializeField] private float wobbleAngle = 7f;
+    [Tooltip("Полный период одной «качалки» (вверх-вниз)")]
+    [SerializeField] private float wobblePeriod = 0.8f;
+    [SerializeField] private Ease wobbleEase = Ease.InOutSine;
 
     private Transform draggedObject;
     private float zOffset;
-    private Vector3 originalScale;
+
+    private float originalY;
+    private Vector3 originalLocalEuler;
+
+    private Tween liftTween;
+    private Tween wobbleTween;
 
     void Start()
     {
@@ -46,8 +64,32 @@ public class ShieldController : MonoBehaviour
             {
                 draggedObject = hit.transform;
                 zOffset = cam.WorldToScreenPoint(draggedObject.position).z;
-                originalScale = draggedObject.localScale;
-                AnimateScale(draggedObject, originalScale * scaleMultiplier);
+
+                originalY = draggedObject.position.y;
+                originalLocalEuler = draggedObject.localEulerAngles;
+
+                DOTween.Kill(draggedObject, complete: false);
+
+                float targetY = originalY + hoverHeight;
+                liftTween?.Kill();
+                liftTween = draggedObject
+                    .DOMoveY(targetY, liftDuration)
+                    .SetEase(liftEase)
+                    .SetLink(draggedObject.gameObject, LinkBehaviour.KillOnDestroy);
+
+                wobbleTween?.Kill();
+                float half = Mathf.Max(0.01f, wobblePeriod * 0.5f);
+                var baseEuler = originalLocalEuler;
+
+                wobbleTween = DOTween.Sequence()
+                    .Append(draggedObject.DOLocalRotate(new Vector3(baseEuler.x + wobbleAngle, baseEuler.y, baseEuler.z), half)
+                        .SetEase(wobbleEase))
+                    .Append(draggedObject.DOLocalRotate(new Vector3(baseEuler.x - wobbleAngle, baseEuler.y, baseEuler.z), half)
+                        .SetEase(wobbleEase))
+                    .Append(draggedObject.DOLocalRotate(new Vector3(baseEuler.x , baseEuler.y, baseEuler.z), half)
+                        .SetEase(wobbleEase))
+                    .SetLoops(-1, LoopType.Restart)
+                    .SetLink(draggedObject.gameObject, LinkBehaviour.KillOnDestroy);
             }
         }
     }
@@ -56,7 +98,19 @@ public class ShieldController : MonoBehaviour
     {
         if (draggedObject != null)
         {
-            AnimateScale(draggedObject, originalScale);
+            wobbleTween?.Kill();
+            liftTween?.Kill();
+
+            draggedObject
+                .DOMoveY(originalY, liftDuration)
+                .SetEase(Ease.InQuad)
+                .SetLink(draggedObject.gameObject, LinkBehaviour.KillOnDestroy);
+
+            draggedObject
+                .DOLocalRotate(originalLocalEuler, liftDuration)
+                .SetEase(Ease.InOutSine)
+                .SetLink(draggedObject.gameObject, LinkBehaviour.KillOnDestroy);
+
             draggedObject = null;
         }
     }
@@ -72,8 +126,10 @@ public class ShieldController : MonoBehaviour
         ObjectMover.MoveTo(draggedObject, targetPos);
     }
 
-    private void AnimateScale(Transform target, Vector3 toScale)
+    private void OnDisable()
     {
-        target.DOScale(toScale, scaleDuration).SetEase(Ease.OutQuad);
+        wobbleTween?.Kill();
+        liftTween?.Kill();
+        if (draggedObject) DOTween.Kill(draggedObject, complete: false);
     }
 }
