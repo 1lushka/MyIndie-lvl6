@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 0
+  outlineMode: 1
   outlineColor: {r: 1, g: 0.8287672, b: 0, a: 1}
   outlineWidth: 7.21
   precomputeOutline: 0
@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 6153751698728721184}
   - component: {fileID: 3887979717733336617}
   - component: {fileID: 5784880940168634402}
+  - component: {fileID: 6656976405129441371}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -1167,6 +1168,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 32.418297, y: 11.808621, z: 1}
   m_Center: {x: -0.9958458, y: -1.8957543, z: 0}
+--- !u!95 &6656976405129441371
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188539130337361522}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc7e23c3cc6c6cd4f9b7eca85734e5be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1067949320438968985
 PrefabInstance:
   m_ObjectHideFlags: 0
