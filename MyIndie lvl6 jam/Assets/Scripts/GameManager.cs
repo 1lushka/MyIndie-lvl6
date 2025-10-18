@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using DG.Tweening;
@@ -8,23 +8,25 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private EnemyAI enemyAI;
     [SerializeField] private GameObject barrier;
+    [SerializeField] private Animator ropeAnimator;
+    [SerializeField] private Animator handAnimator;
 
     [Header("Settings")]
     [SerializeField] private float respawnDelay = 3f;
-    [SerializeField] private float barrierScaleDuration = 0.3f;
+    [SerializeField] private float barrierMoveDistance = 2f; 
+    [SerializeField] private float barrierMoveDuration = 0.5f; 
+    [SerializeField] private float delayBeforeAttack = 1f; 
 
     private bool waitingForAttack = false;
     private bool canAttack = false;
     private int roundCount = 0;
-    private Vector3 barrierOriginalScale;
+    private Vector3 barrierOriginalPosition;
 
     void Start()
     {
         if (barrier != null)
         {
-            barrierOriginalScale = barrier.transform.localScale;
-            barrier.transform.localScale = Vector3.zero;
-            barrier.SetActive(false);
+            barrierOriginalPosition = barrier.transform.position;
         }
 
         StartCoroutine(GameLoop());
@@ -34,9 +36,9 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-
             roundCount++;
-            if (roundCount == 10) print("èãðîê ïîáåäèë");
+            if (roundCount == 10)
+                print("Ð¸Ð³Ñ€Ð¾Ðº Ð¿Ð¾Ð±ÐµÐ´Ð¸Ð»");
 
             if (barrier != null)
                 ShowBarrier();
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
 
             waitingForAttack = false;
             canAttack = false;
+
+            yield return new WaitForSeconds(delayBeforeAttack);
 
             enemyAI.StartAttack();
 
@@ -61,18 +65,24 @@ public class GameManager : MonoBehaviour
     public void StartRound()
     {
         canAttack = true;
+
+        if (ropeAnimator != null)
+            ropeAnimator.SetTrigger("StartRound");
+
+        if (handAnimator != null)
+            handAnimator.SetTrigger("StartRound");
     }
 
     private void ShowBarrier()
     {
-        barrier.SetActive(true);
-        barrier.transform.localScale = Vector3.zero;
-        barrier.transform.DOScale(barrierOriginalScale, barrierScaleDuration).SetEase(Ease.OutBack);
+        barrier.transform.DOMoveY(barrierOriginalPosition.y, barrierMoveDuration)
+            .SetEase(Ease.InQuad);
+
     }
 
     private void HideBarrier()
     {
-        barrier.transform.DOScale(Vector3.zero, barrierScaleDuration).SetEase(Ease.InBack)
-            .OnComplete(() => barrier.SetActive(false));
+        barrier.transform.DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
+            .SetEase(Ease.OutQuad);
     }
 }

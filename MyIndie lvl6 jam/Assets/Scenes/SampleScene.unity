@@ -196,8 +196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAI: {fileID: 71226709}
   barrier: {fileID: 396457203}
+  ropeAnimator: {fileID: 396457211}
+  handAnimator: {fileID: 1625600990}
   respawnDelay: 3
-  barrierScaleDuration: 0.3
+  barrierMoveDistance: 10
+  barrierMoveDuration: 0.5
+  delayBeforeAttack: 1
 --- !u!4 &71226711
 Transform:
   m_ObjectHideFlags: 0
@@ -607,6 +611,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2827863569465473880, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
   m_PrefabInstance: {fileID: 4340884135020096106}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &396457211
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396457203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d09531df875862d40b0a8aa4ed27d830, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!108 &410087040 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 6628804075915989919, guid: b7c99592eb3d28c40871678bee4bd746, type: 3}
@@ -1170,6 +1196,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1008253247309190424, guid: fc106e91f5bbbea46a232708dc8d07ba, type: 3}
   m_PrefabInstance: {fileID: 613823102}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1625600990 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8106097269546445601, guid: fc106e91f5bbbea46a232708dc8d07ba, type: 3}
+  m_PrefabInstance: {fileID: 613823102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1683280807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1594,6 +1625,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 71226711}
     m_Modifications:
+    - target: {fileID: 2775403216772261889, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      propertyPath: m_Name
+      value: Rope (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 2827863569465473880, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.793418
@@ -1653,7 +1688,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9188539130337361522, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 396457211}
   m_SourcePrefab: {fileID: 100100000, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
 --- !u!1001 &6361858033157743563
 PrefabInstance:
