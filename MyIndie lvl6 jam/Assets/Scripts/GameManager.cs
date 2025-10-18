@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     {
         if (waveText != null)
         {
-            waveText.text = $"Волна {roundCount}";
+            waveText.text = $"ROUND: {roundCount}";
             waveText.DOFade(1f, 0.3f).From(0f);
             waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
         }
