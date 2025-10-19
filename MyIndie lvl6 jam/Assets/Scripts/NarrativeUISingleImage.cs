@@ -26,7 +26,7 @@ public class NarrativeUISingleImage : MonoBehaviour
     {
         if (manager == null) manager = FindObjectsByType<RopesHealthManager>(FindObjectsSortMode.None)[0];
     }
-
+    /*
     private void OnEnable()
     {
         if (manager == null) return;
@@ -43,7 +43,7 @@ public class NarrativeUISingleImage : MonoBehaviour
         manager.OnFirstHit2 -= HandleHit2;
         manager.OnFirstHit1 -= HandleHit1;
         manager.OnFirstHit0 -= HandleHit0;
-    }
+    }*/
 
     private void Start()
     {

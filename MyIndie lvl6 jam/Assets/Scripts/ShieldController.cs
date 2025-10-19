@@ -31,10 +31,41 @@ public class ShieldController : MonoBehaviour
     private Tween liftTween;
     private Tween wobbleTween;
 
+    // ƒќЅј¬»“№ ѕќЋя
+    [Header("Drop (external)")]
+    [SerializeField] private float externalHideOffsetY = 8f;
+    [SerializeField] private float externalDropDuration = 0.45f;
+    [SerializeField] private Ease externalDropEase = Ease.OutQuad;
+
+    private float _baseY;
+
+    
+
+// ƒќЅј¬»“№ ћ≈“ќƒџ
+/// ћоментально унести щит наверх
+public void HideAbove()
+    {
+        var tr = transform;
+        tr.DOKill();
+        tr.position = new Vector3(tr.position.x, _baseY + externalHideOffsetY, tr.position.z);
+    }
+
+    ///  инуть щит сверху вниз на исходную высоту
+    public Tween DropFromTop()
+    {
+        var tr = transform;
+        tr.DOKill();
+        tr.position = new Vector3(tr.position.x, _baseY + externalHideOffsetY, tr.position.z);
+        return tr.DOMoveY(_baseY, externalDropDuration).SetEase(externalDropEase);
+    }
+
+
     void Start()
     {
         if (cam == null)
             cam = Camera.main;
+        // ƒќЅј¬»“№ ¬ Start()
+        _baseY = transform.position.y;
     }
 
     void Update()
