@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using DG.Tweening;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -41,7 +42,12 @@ public class GameManager : MonoBehaviour
             UpdateWaveText();
 
             if (roundCount == 10)
+            {
                 print("игрок победил");
+                SceneManager.LoadScene("Win scene");
+            }
+                
+            
 
             if (barrier != null)
                 ShowBarrier();
