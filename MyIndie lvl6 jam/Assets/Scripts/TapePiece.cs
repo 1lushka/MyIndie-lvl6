@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TapePiece : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class TapePiece : MonoBehaviour
     private float lastDamageTime = -999f;
     private Vector3[] originalScales;
 
+    public event Action<TapePiece, int> HealthChanged;
+    public int Health => health;
+
     void Start()
     {
         maxHealth = health;
@@ -52,7 +56,7 @@ public class TapePiece : MonoBehaviour
 
         Shake();
         UpdateRopeScales();
-
+        HealthChanged?.Invoke(this, health);
         if (health <= 0)
             Detach();
     }
@@ -89,6 +93,6 @@ public class TapePiece : MonoBehaviour
     void Detach()
     {
         shakeTween?.Kill();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
