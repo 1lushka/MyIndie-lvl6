@@ -199,6 +199,10 @@ MonoBehaviour:
   ropeAnimator: {fileID: 396457211}
   handAnimator: {fileID: 1625600990}
   waveText: {fileID: 0}
+  audioSource: {fileID: 0}
+  barrierOpenSounds: []
+  barrierCloseSounds: []
+  roundStartSounds: []
   respawnDelay: 3
   barrierMoveDistance: 25
   barrierMoveDuration: 0.5
@@ -2539,7 +2543,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2827863569465473880, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
       insertIndex: 0
       addedObject: {fileID: 525433845}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 913314292083006508, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
 --- !u!1001 &6361858033157743563
 PrefabInstance:
@@ -2710,10 +2717,6 @@ PrefabInstance:
       propertyPath: reasonText
       value: 
       objectReference: {fileID: 299499978}
-    - target: {fileID: 6812971287844279758, guid: 7f757b55637d8254eaec40d6182ebcf9, type: 3}
-      propertyPath: 'characters.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 6e295aa4584b81f4cb28d500a796c353, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
