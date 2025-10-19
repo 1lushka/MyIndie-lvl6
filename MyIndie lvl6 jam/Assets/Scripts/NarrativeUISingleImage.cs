@@ -101,7 +101,7 @@ public class NarrativeUISingleImage : MonoBehaviour
         if (_current == null || mainImage == null) return;
         mainImage.sprite = _current.spriteAt0;
         mainImage.enabled = mainImage.sprite != null;
-        flashAnimator.SetTrigger("Flash");
+        flashAnimator.SetTrigger("Dead");
 
     }
 }
