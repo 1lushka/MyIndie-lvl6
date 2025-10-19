@@ -49,13 +49,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSpeed: 10
-  maxSpeed: 30
+  maxSpeed: 20
   acceleration: 60
   damage: 1
   target: {fileID: 0}
-  arcHeight: 2
+  arcHeight: 6
   ropeHitParticles: {fileID: 25173453392198057, guid: f0f9aba5eebe5d64b96d7049fd48440d, type: 3}
   defaultHitParticles: {fileID: 5576287502626744145, guid: f6576b512519df84488c3dd961445ac3, type: 3}
+  audioSource: {fileID: 0}
+  throwSounds:
+  - {fileID: 8300000, guid: 3e7b8021e109e9742b2b3794d9e3b66d, type: 3}
+  - {fileID: 8300000, guid: 8bc051b710b5e46468019758b0683b40, type: 3}
+  - {fileID: 8300000, guid: 655d1fe7138fdd545859cc96a02cdfd0, type: 3}
+  - {fileID: 8300000, guid: 1a28958314d7a734886c5fe9d463bae6, type: 3}
+  - {fileID: 8300000, guid: 9d10a10a7b7467144a3ce58948899c55, type: 3}
+  - {fileID: 8300000, guid: 564ff5611371d654196d5ad4e4be8d0b, type: 3}
+  - {fileID: 8300000, guid: 2fc7400e8d302524f80c25ce2d3a0e4b, type: 3}
+  ropeHitSounds:
+  - {fileID: 8300000, guid: d7364cd32dd90704abb2cf460cf9bd37, type: 3}
+  shieldHitSounds:
+  - {fileID: 8300000, guid: e37ce9790e9001e4ea4839d866036a2a, type: 3}
+  - {fileID: 8300000, guid: 13f9338fac579cf4fb2cd0a74193ecbc, type: 3}
+  - {fileID: 8300000, guid: eb18aca46483198409d65ffea5ac6c3c, type: 3}
   hitCooldown: 0.3
 --- !u!54 &2709810626315359302
 Rigidbody:

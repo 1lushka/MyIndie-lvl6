@@ -1,17 +1,24 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class Axe : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float startSpeed = 5f;
     [SerializeField] private float maxSpeed = 20f;
     [SerializeField] private float acceleration = 30f;
     [SerializeField] private int damage = 1;
-    [SerializeField] private Transform target;     // цель
+    [SerializeField] private Transform target;
     [SerializeField] private float arcHeight = 2f;
 
     [Header("Particles")]
     [SerializeField] private ParticleSystem ropeHitParticles;
     [SerializeField] private ParticleSystem defaultHitParticles;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] throwSounds;       // рџ”№ Р·РІСѓРєРё Р±СЂРѕСЃРєР°
+    [SerializeField] private AudioClip[] ropeHitSounds;
+    [SerializeField] private AudioClip[] shieldHitSounds;
 
     [Header("Settings")]
     [SerializeField] private float hitCooldown = 0.3f;
@@ -21,18 +28,20 @@ public class Axe : MonoBehaviour
     private float currentSpeed;
     private TrailRenderer trail;
     private float lastHitTime = -999f;
-
-    // максимальная высота дуги над стартовой высотой
     private Vector3 arcStart;
 
     private void Awake()
     {
-        arcStart=transform.position;
+        arcStart = transform.position;
         anim = GetComponent<Animator>();
         trail = GetComponent<TrailRenderer>();
-        if (trail == null) trail = GetComponentInChildren<TrailRenderer>();
+        if (trail == null)
+            trail = GetComponentInChildren<TrailRenderer>();
         if (trail != null)
             trail.enabled = false;
+
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     public void Throw()
@@ -43,6 +52,9 @@ public class Axe : MonoBehaviour
         currentSpeed = startSpeed;
         if (trail != null)
             trail.enabled = true;
+
+        // рџЋµ Р—РІСѓРє Р±СЂРѕСЃРєР°
+        PlayRandomSound(throwSounds);
     }
 
     void Update()
@@ -50,7 +62,6 @@ public class Axe : MonoBehaviour
         if (isThrown)
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, acceleration * Time.deltaTime);
-            
             Vector3 targetPos = transform.position + transform.forward * -currentSpeed * Time.deltaTime;
             targetPos = ApplyArcHeight(targetPos);
             ObjectMover.MoveTo(transform, targetPos);
@@ -60,40 +71,58 @@ public class Axe : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (Time.time - lastHitTime < hitCooldown)
-            return; 
+            return;
 
         lastHitTime = Time.time;
         isThrown = false;
 
-
         if (trail != null)
             trail.enabled = false;
 
+        if (anim)
+        {
+            anim.SetBool("Flying", false);
+            anim.SetBool("InShield", false);
+        }
+
         TapePiece tape = collision.gameObject.GetComponent<TapePiece>();
-        if (tape == null) tape = collision.gameObject.GetComponentInParent<TapePiece>();
+        if (tape == null)
+            tape = collision.gameObject.GetComponentInParent<TapePiece>();
+
         if (tape != null)
         {
             tape.TakeDamage(damage);
+
             if (ropeHitParticles != null)
                 Instantiate(ropeHitParticles, collision.contacts[0].point, Quaternion.identity);
-            if (anim) anim.SetBool("Flying",false);
-            if (anim) anim.SetBool("InShield", false);
 
+            PlayRandomSound(ropeHitSounds);
         }
         else
         {
             if (defaultHitParticles != null)
                 Instantiate(defaultHitParticles, collision.contacts[0].point, Quaternion.identity);
-            if (anim) anim.SetBool("InShield", true);
-            if (anim) anim.SetBool("Flying", false);
 
+            if (anim)
+                anim.SetBool("InShield", true);
+
+            PlayRandomSound(shieldHitSounds);
         }
     }
+
+    private void PlayRandomSound(AudioClip[] clips)
+    {
+        if (audioSource == null || clips == null || clips.Length == 0)
+            return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        audioSource.PlayOneShot(clip);
+    }
+
     private Vector3 ApplyArcHeight(Vector3 currentPos)
     {
         if (target == null) return currentPos;
 
-        // Линия движения по земле/пространству: от старта до цели (цель — на высоте старта)
         Vector3 a = arcStart;
         Vector3 b = target.position;
         b.y = a.y;
@@ -102,13 +131,9 @@ public class Axe : MonoBehaviour
         float abLenSqr = ab.sqrMagnitude;
         if (abLenSqr < 1e-6f) return currentPos;
 
-        // Нормализованный прогресс вдоль линии старта->цели (0..1) исходя из текущего положения топора
         float s = Mathf.Clamp01(Vector3.Dot(currentPos - a, ab) / abLenSqr);
-
-        // Параболическая добавка по высоте: пик в середине (s=0.5), 0 на концах
         float yOffset = 4f * arcHeight * s * (1f - s);
 
-        // Применяем высоту: базовый уровень — высота старта
         currentPos.y = a.y + yOffset;
         return currentPos;
     }
