@@ -49,6 +49,7 @@ public class ShieldsRoundDirector : MonoBehaviour
         tr.DOKill();
         tr.position = new Vector3(tr.position.x, baseY[count] + hideOffsetY, tr.position.z);
         tr.DOMoveY(baseY[count], dropDuration).SetEase(dropEase);
+        if (count == 2) shields.Clear();
         if (count ==1) DropShieldsForRound(3);
         // Остальные (если есть) остаются спрятанными наверху
     }

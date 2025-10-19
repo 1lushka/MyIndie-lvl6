@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     private bool isBarrierDown = true;
     private bool roundInProgress = false; // ✅ флаг, что раунд идёт
     private int roundCount = 0;
-    private int roundToWin = 20;
+    [SerializeField] private int roundToWin = 15;
     private Vector3 barrierOriginalPosition;
 
     [SerializeField] private ShieldsRoundDirector shieldsDirector;
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
     {
         if (waveText != null)
         {
-            waveText.text = $"ROUND: {roundToWin- roundCount+1}";
+            waveText.text = $"LEFT: {roundToWin- roundCount+1}";
             waveText.DOFade(1f, 0.3f).From(0f);
             waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
         }
