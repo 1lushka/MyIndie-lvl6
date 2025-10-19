@@ -3333,15 +3333,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132147656776842}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18180858, y: 0.26280856, z: 0.10067298, w: 0.94220084}
-  m_LocalPosition: {x: -8.62, y: 3.66, z: 1.11}
+  m_LocalRotation: {x: 0.18374598, y: 0.26145762, z: 0.10763392, w: 0.941431}
+  m_LocalPosition: {x: -8.8970785, y: 6.669186, z: 2.3880258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 357476231}
   - {fileID: 338483301}
   m_Father: {fileID: 1045355175}
-  m_LocalEulerAnglesHint: {x: 16.839, y: 33.757, z: 17.341}
+  m_LocalEulerAnglesHint: {x: 16.839, y: 33.757, z: 18.187}
 --- !u!4 &543450652869407303
 Transform:
   m_ObjectHideFlags: 0
@@ -3350,15 +3350,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148945676541}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18952122, y: 0.16684195, z: 0.071999446, w: 0.96491534}
-  m_LocalPosition: {x: -5.97, y: 3.71, z: 0.84}
+  m_LocalRotation: {x: 0.1854731, y: 0.17133088, z: 0.04888088, w: 0.9663623}
+  m_LocalPosition: {x: -5.74, y: 6.95, z: 2.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 979068221}
   - {fileID: 1499191684}
   m_Father: {fileID: 1045355175}
-  m_LocalEulerAnglesHint: {x: 19.982, y: 21.817, z: 12.424}
+  m_LocalEulerAnglesHint: {x: 19.982, y: 21.817, z: 9.68}
 --- !u!4 &543450652914148691
 Transform:
   m_ObjectHideFlags: 0
@@ -3367,15 +3367,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148908605417}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20108563, y: 0.018302584, z: 0.011670691, w: 0.97933316}
-  m_LocalPosition: {x: -3.17, y: 3.57, z: 0.95}
+  m_LocalRotation: {x: 0.20081227, y: -0.001141296, z: 0.015662644, w: 0.9795039}
+  m_LocalPosition: {x: -3.08, y: 2.33, z: 0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1243067317}
   - {fileID: 1615780658}
   m_Father: {fileID: 1045355175}
-  m_LocalEulerAnglesHint: {x: 23.168, y: 2.527, z: 1.884}
+  m_LocalEulerAnglesHint: {x: 23.168, y: 0.2527, z: 1.884}
 --- !u!1001 &657367752172152020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3459,6 +3459,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450651842643504}
+  - component: {fileID: 919132147656776844}
+  - component: {fileID: 919132147656776843}
   m_Layer: 0
   m_Name: MusicButton
   m_TagString: Untagged
@@ -3466,6 +3468,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &919132147656776843
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147656776842}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &919132147656776844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147656776842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db23710491c890b44a892c0bf4867a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minY: 3.02
+  maxY: 6.66
+  sensitivity: 0.7
+  value: 0
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &919132148908605417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3475,6 +3523,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652914148691}
+  - component: {fileID: 919132148908605418}
+  - component: {fileID: 919132148908605419}
+  - component: {fileID: 919132148908605420}
   m_Layer: 0
   m_Name: SensitivityButton
   m_TagString: Untagged
@@ -3482,6 +3533,73 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &919132148908605418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148908605417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db23710491c890b44a892c0bf4867a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minY: 1.42
+  maxY: 7.48
+  sensitivity: 0.7
+  value: 0
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!65 &919132148908605419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148908605417}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &919132148908605420
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148908605417}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &919132148945676541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,6 +3609,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652869407303}
+  - component: {fileID: 919132148945676543}
+  - component: {fileID: 919132148945676542}
   m_Layer: 0
   m_Name: SoundsButton
   m_TagString: Untagged
@@ -3498,6 +3618,52 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!54 &919132148945676542
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148945676541}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &919132148945676543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148945676541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db23710491c890b44a892c0bf4867a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minY: 2.59
+  maxY: 6.87
+  sensitivity: 0.7
+  value: 0
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &963913914933057791
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6099,7 +6265,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.4983776, y: 6.8437886, z: 1.4983777}
   m_Center: {x: -0.0000000031748402, y: 3.4089587, z: 0.00000016119952}
@@ -7264,7 +7430,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.4983774, y: 4.087018, z: 0.7821611}
   m_Center: {x: 0.0000000012054296, y: -1.2943202, z: 0.000000021030896}
