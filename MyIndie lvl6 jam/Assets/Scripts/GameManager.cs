@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator handAnimator;
     [SerializeField] private TextMeshPro waveText;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] barrierOpenSounds;   // звуки открытия
+    [SerializeField] private AudioClip[] barrierCloseSounds;  // звуки закрытия
+    [SerializeField] private AudioClip[] roundStartSounds;    // звуки старта раунда
+
     [Header("Settings")]
     [SerializeField] private float respawnDelay = 3f;
     [SerializeField] private float barrierMoveDistance = 2f;
@@ -30,7 +36,6 @@ public class GameManager : MonoBehaviour
             barrierOriginalPosition = barrier.transform.position;
 
         UpdateWaveText();
-
         StartCoroutine(GameLoop());
     }
 
@@ -46,8 +51,6 @@ public class GameManager : MonoBehaviour
                 print("игрок победил");
                 SceneManager.LoadScene("Win scene");
             }
-                
-            
 
             if (barrier != null)
                 ShowBarrier();
@@ -80,18 +83,24 @@ public class GameManager : MonoBehaviour
 
         if (handAnimator != null)
             handAnimator.SetTrigger("StartRound");
+
+        PlayRandomSound(roundStartSounds);
     }
 
     private void ShowBarrier()
     {
         barrier.transform.DOMoveY(barrierOriginalPosition.y, barrierMoveDuration)
             .SetEase(Ease.InQuad);
+
+        PlayRandomSound(barrierCloseSounds);
     }
 
     private void HideBarrier()
     {
         barrier.transform.DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
             .SetEase(Ease.OutQuad);
+
+        PlayRandomSound(barrierOpenSounds);
     }
 
     private void UpdateWaveText()
@@ -102,5 +111,14 @@ public class GameManager : MonoBehaviour
             waveText.DOFade(1f, 0.3f).From(0f);
             waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
         }
+    }
+
+    private void PlayRandomSound(AudioClip[] clips)
+    {
+        if (audioSource == null || clips == null || clips.Length == 0)
+            return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        audioSource.PlayOneShot(clip);
     }
 }
