@@ -204,7 +204,7 @@ MonoBehaviour:
   barrier: {fileID: 396457203}
   ropeAnimator: {fileID: 396457211}
   handAnimator: {fileID: 1625600990}
-  waveText: {fileID: 154377630}
+  waveText: {fileID: 4340884135020096107}
   audioSource: {fileID: 1884976131}
   barrierOpenSounds:
   - {fileID: 0}
@@ -362,17 +362,6 @@ MonoBehaviour:
   - {fileID: 1545308622}
   - {fileID: 267571293}
   - {fileID: 880549963}
---- !u!114 &154377630 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6603946672475311047, guid: 7f8465c7490740e4ea266116542bdcbc, type: 3}
-  m_PrefabInstance: {fileID: 8523602576401466087}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &160972895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,8 +3240,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 913314292083006508, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+--- !u!114 &4340884135020096107 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8463084709964300497, guid: 381d56a3ad24bb14a91e621ba5701748, type: 3}
+  m_PrefabInstance: {fileID: 4340884135020096106}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6361858033157743563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3337,6 +3340,10 @@ PrefabInstance:
     - target: {fileID: 2713482912859054077, guid: 7f8465c7490740e4ea266116542bdcbc, type: 3}
       propertyPath: m_Name
       value: RoundCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713482912859054077, guid: 7f8465c7490740e4ea266116542bdcbc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3378802503842661703, guid: 7f8465c7490740e4ea266116542bdcbc, type: 3}
       propertyPath: m_LocalPosition.x
