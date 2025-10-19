@@ -82,6 +82,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
+
     public void StartRound()
     {
         // ✅ нельзя стартовать, если барьер не опущен или раунд уже идёт
