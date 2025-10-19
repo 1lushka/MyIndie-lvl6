@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: c58c2ddea9bb61747aa0188bf714eb2f
+  - enabled: 1
+    path: Assets/Scenes/Kubirill_Test_Debug.unity
+    guid: 42d1958e5d751e34087214a31a9d1e8f
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:

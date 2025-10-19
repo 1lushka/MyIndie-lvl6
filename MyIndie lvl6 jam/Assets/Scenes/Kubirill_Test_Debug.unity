@@ -368,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 1439552973}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: maxSpeed
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: arcHeight
@@ -376,7 +376,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: startSpeed
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: hitCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: acceleration
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6998462733285164504, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: m_LocalPosition.x
@@ -837,7 +845,7 @@ PrefabInstance:
       objectReference: {fileID: 1439552973}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: maxSpeed
-      value: 18
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: arcHeight
@@ -845,7 +853,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: startSpeed
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: hitCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: acceleration
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6998462733285164504, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1680,15 +1696,19 @@ PrefabInstance:
       objectReference: {fileID: 1439552973}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: maxSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
-      propertyPath: arcHeight
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: startSpeed
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: hitCooldown
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6557223741089105949, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
+      propertyPath: acceleration
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6998462733285164504, guid: 1863e5d70ee88164b91563e6dfd3c433, type: 3}
       propertyPath: m_LocalPosition.x
