@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private bool isBarrierDown = true;
     private bool roundInProgress = false; // ✅ флаг, что раунд идёт
     private int roundCount = 0;
+    private int roundToWin = 20;
     private Vector3 barrierOriginalPosition;
 
     void Start()
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
             roundCount++;
             UpdateWaveText();
 
-            if (roundCount == 10)
+            if (roundCount == roundToWin)
             {
                 Debug.Log("игрок победил");
                 SceneManager.LoadScene("Win scene");
@@ -134,7 +135,7 @@ public class GameManager : MonoBehaviour
     {
         if (waveText != null)
         {
-            waveText.text = $"ROUND: {roundCount}";
+            waveText.text = $"ROUND: {roundToWin- roundCount+1}";
             waveText.DOFade(1f, 0.3f).From(0f);
             waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
         }
