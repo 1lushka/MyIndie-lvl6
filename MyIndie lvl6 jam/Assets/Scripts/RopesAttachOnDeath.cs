@@ -29,7 +29,10 @@ public class RopesAttachOnDeath : MonoBehaviour
     [SerializeField] private string deathTrigger = "Death";                         // имя триггера
     private bool _moveLeftActive;                                                   // флаг движения
 
+    [SerializeField] private AudioSource DeathAudioSource;
 
+    [SerializeField] private AudioClip giliotina;
+    [SerializeField] private AudioClip HeadCut;
 
     private void Awake()
     {
@@ -82,6 +85,8 @@ public class RopesAttachOnDeath : MonoBehaviour
     private System.Collections.IEnumerator PostZeroSequence(TapePiece destroyed)
     {
         // случайная задержка
+        DeathAudioSource.Play();
+        
         float delay = Random.Range(postZeroDelayRange.x, postZeroDelayRange.y);
         if (delay > 0f) yield return new WaitForSeconds(delay);
 
@@ -90,7 +95,8 @@ public class RopesAttachOnDeath : MonoBehaviour
 
         // 2) включаем движение левого трансформа влево
         _moveLeftActive = true;
-
+        DeathAudioSource.clip = giliotina;
+        DeathAudioSource.Play();
         // 3) триггерим аниматор
         if (deathAnimator != null && !string.IsNullOrEmpty(deathTrigger))
             deathAnimator.SetTrigger(deathTrigger);
