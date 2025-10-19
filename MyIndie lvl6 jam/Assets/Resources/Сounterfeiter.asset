@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12932cb8aef694744893d6775767b43a, type: 3}
-  m_Name: Writer
+  m_Name: "\u0421ounterfeiter"
   m_EditorClassIdentifier: 
   executionReasonText: 'Accusation
 
@@ -26,6 +26,6 @@ MonoBehaviour:
     and is sentenced to death by guillotine.
 
 '
-  spriteAt2: {fileID: 21300000, guid: 57cb87b289c6f3042b3b2e8eac230dc4, type: 3}
-  spriteAt1: {fileID: 21300000, guid: b80deada2d9319a4982e68e10aec659e, type: 3}
-  spriteAt0: {fileID: 21300000, guid: 57cb87b289c6f3042b3b2e8eac230dc4, type: 3}
+  spriteAt2: {fileID: 21300000, guid: e16b9f398b7a9cd478dda13857dce5cc, type: 3}
+  spriteAt1: {fileID: 21300000, guid: 9339829a433ed624d8c28cb4270f9690, type: 3}
+  spriteAt0: {fileID: 21300000, guid: 428f6e350e40e504599efbd5d041d443, type: 3}
