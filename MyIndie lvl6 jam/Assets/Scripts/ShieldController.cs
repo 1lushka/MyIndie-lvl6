@@ -38,12 +38,15 @@ public class ShieldController : MonoBehaviour
     [SerializeField] private Ease externalDropEase = Ease.OutQuad;
 
     private float _baseY;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] stackClip;
+    [SerializeField] private AudioClip[] takeClip;
 
-    
 
-// ДОБАВИТЬ МЕТОДЫ
-/// Моментально унести щит наверх
-public void HideAbove()
+    // ДОБАВИТЬ МЕТОДЫ
+    /// Моментально унести щит наверх
+    public void HideAbove()
     {
         var tr = transform;
         tr.DOKill();
@@ -99,6 +102,9 @@ public void HideAbove()
                 originalY = draggedObject.position.y;
                 originalLocalEuler = draggedObject.localEulerAngles;
 
+                PlayRandomSoundFrom(takeClip);
+
+
                 DOTween.Kill(draggedObject, complete: false);
 
                 float targetY = originalY + hoverHeight;
@@ -143,7 +149,29 @@ public void HideAbove()
                 .SetLink(draggedObject.gameObject, LinkBehaviour.KillOnDestroy);
 
             draggedObject = null;
+            StartCoroutine( PlayRandomSound(stackClip));
         }
+    }
+    private System.Collections.IEnumerator PlayRandomSound(AudioClip[] clips)
+    {
+        if (!(audioSource == null || clips == null || clips.Length == 0))
+        {
+            yield return new WaitForSeconds(liftDuration);
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
+            audioSource.PlayOneShot(clip);
+        }
+                    
+        
+    }
+    private void PlayRandomSoundFrom(AudioClip[] clips)
+    {
+        if (!(audioSource == null || clips == null || clips.Length == 0))
+        {
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
+            audioSource.PlayOneShot(clip);
+        }
+
+
     }
 
     private void DragObject()
