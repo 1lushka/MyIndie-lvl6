@@ -20,6 +20,7 @@ public class Slider3D : MonoBehaviour
     {
         mainCamera = Camera.main;
         UpdatePositionFromValue();
+        onValueChanged?.Invoke(value);
     }
 
     void OnMouseDown()
