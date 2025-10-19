@@ -13,6 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator handAnimator;
     [SerializeField] private TextMeshPro waveText;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] barrierOpenSounds;   // звуки открытия
+    [SerializeField] private AudioClip[] barrierCloseSounds;  // звуки закрытия
+    [SerializeField] private AudioClip[] roundStartSounds;    // звуки старта раунда
+
     [Header("Settings")]
     [SerializeField] private float respawnDelay = 3f;
     [SerializeField] private float barrierMoveDistance = 2f;
@@ -21,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private bool waitingForAttack = false;
     private bool canAttack = false;
+    private bool isBarrierDown = true;
+    private bool roundInProgress = false; // ✅ флаг, что раунд идёт
     private int roundCount = 0;
     private Vector3 barrierOriginalPosition;
 
@@ -30,7 +38,6 @@ public class GameManager : MonoBehaviour
             barrierOriginalPosition = barrier.transform.position;
 
         UpdateWaveText();
-
         StartCoroutine(GameLoop());
     }
 
@@ -43,19 +50,19 @@ public class GameManager : MonoBehaviour
 
             if (roundCount == 10)
             {
-                print("игрок победил");
+                Debug.Log("игрок победил");
                 SceneManager.LoadScene("Win scene");
             }
-                
-            
 
             if (barrier != null)
-                ShowBarrier();
+                yield return ShowBarrier();
 
             enemyAI.MakeMove();
             waitingForAttack = true;
+            
 
             yield return new WaitUntil(() => canAttack);
+            roundInProgress = true; // ✅ начинаем раунд
 
             waitingForAttack = false;
             canAttack = false;
@@ -65,14 +72,30 @@ public class GameManager : MonoBehaviour
             enemyAI.StartAttack();
 
             if (barrier != null)
-                HideBarrier();
+                yield return HideBarrier();
 
+            // ✅ Ждём, пока враг закончит атаку (если нужно — можно добавить событие окончания)
             yield return new WaitForSeconds(respawnDelay);
+
+            roundInProgress = false; // ✅ теперь можно снова начать новый раунд
         }
     }
 
     public void StartRound()
     {
+        // ✅ нельзя стартовать, если барьер не опущен или раунд уже идёт
+        if (!isBarrierDown)
+        {
+            Debug.Log("⛔ Нельзя начать раунд — барьер ещё не опущен!");
+            return;
+        }
+
+        if (roundInProgress)
+        {
+            Debug.Log("⚠️ Нельзя начать новый раунд — текущий ещё не закончился!");
+            return;
+        }
+
         canAttack = true;
 
         if (ropeAnimator != null)
@@ -80,18 +103,31 @@ public class GameManager : MonoBehaviour
 
         if (handAnimator != null)
             handAnimator.SetTrigger("StartRound");
+
+        PlayRandomSound(roundStartSounds);
     }
 
-    private void ShowBarrier()
+    private IEnumerator ShowBarrier()
     {
-        barrier.transform.DOMoveY(barrierOriginalPosition.y, barrierMoveDuration)
+        isBarrierDown = true;
+        PlayRandomSound(barrierCloseSounds);
+
+        Tween t = barrier.transform.DOMoveY(barrierOriginalPosition.y, barrierMoveDuration)
             .SetEase(Ease.InQuad);
+
+        yield return t.WaitForCompletion();
     }
 
-    private void HideBarrier()
+    private IEnumerator HideBarrier()
     {
-        barrier.transform.DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
+        isBarrierDown = false;
+        PlayRandomSound(barrierOpenSounds);
+
+        Tween t = barrier.transform
+            .DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
             .SetEase(Ease.OutQuad);
+
+        yield return t.WaitForCompletion();
     }
 
     private void UpdateWaveText()
@@ -102,5 +138,14 @@ public class GameManager : MonoBehaviour
             waveText.DOFade(1f, 0.3f).From(0f);
             waveText.transform.DOPunchScale(Vector3.one * 0.1f, 0.3f, 6, 0.5f);
         }
+    }
+
+    private void PlayRandomSound(AudioClip[] clips)
+    {
+        if (audioSource == null || clips == null || clips.Length == 0)
+            return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        audioSource.PlayOneShot(clip);
     }
 }

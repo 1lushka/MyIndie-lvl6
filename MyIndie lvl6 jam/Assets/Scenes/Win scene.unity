@@ -2316,6 +2316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 783960087}
   - component: {fileID: 783960086}
+  - component: {fileID: 783960088}
   m_Layer: 0
   m_Name: WinCutscene
   m_TagString: Untagged
@@ -2367,6 +2368,20 @@ Transform:
   - {fileID: 109960964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &783960088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783960085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cda0d9ca144f349ac34d06fa941827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeNextScene: 15
+  nextSceneName: MenuScene
 --- !u!1 &858283319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,7 +2618,7 @@ AudioSource:
   m_GameObject: {fileID: 1042201696}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 019884074d83e3347916dd1381e6d9da, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 34feaecfd06a44146842bad8c07ecf76, type: 3}
   m_PlayOnAwake: 1
@@ -3922,7 +3937,7 @@ AudioSource:
   m_GameObject: {fileID: 1987847643}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 019884074d83e3347916dd1381e6d9da, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3c384db7c62c5104ab203c818a3ccb39, type: 3}
   m_PlayOnAwake: 1
