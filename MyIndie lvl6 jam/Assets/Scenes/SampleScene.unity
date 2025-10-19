@@ -1723,6 +1723,11 @@ Transform:
   - {fileID: 813542413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1028254533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4844365593918693838, guid: 68c9e73327e46ee478ccb9fda953f3de, type: 3}
+  m_PrefabInstance: {fileID: 1231849143}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1115680480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2165,7 +2170,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 148749746662716823, guid: 68c9e73327e46ee478ccb9fda953f3de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 330585546}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4844365593918693838, guid: 68c9e73327e46ee478ccb9fda953f3de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1820885371}
   m_SourcePrefab: {fileID: 100100000, guid: 68c9e73327e46ee478ccb9fda953f3de, type: 3}
 --- !u!1001 &1344068356
 PrefabInstance:
@@ -2657,6 +2665,20 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6073311991787654594, guid: 68c9e73327e46ee478ccb9fda953f3de, type: 3}
   m_PrefabInstance: {fileID: 1231849143}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1820885371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028254533}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cda0d9ca144f349ac34d06fa941827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayBeforeNextScene: 4
+  nextSceneName: MenuScene
 --- !u!4 &1874180778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2261896880755730867, guid: 0f83bf53a8614154a82fff15412b0546, type: 3}

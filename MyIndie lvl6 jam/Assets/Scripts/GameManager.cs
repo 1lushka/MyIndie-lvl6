@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         PlayRandomSound(barrierCloseSounds);
     }
 
+
     private void HideBarrier()
     {
         barrier.transform.DOMoveY(barrierOriginalPosition.y + barrierMoveDistance, barrierMoveDuration)
