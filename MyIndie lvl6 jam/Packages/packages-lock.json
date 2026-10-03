@@ -507,6 +507,13 @@
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.subsystems": "1.0.0"
       }
+    },
+    "com.cqf.urpvolumetricfog": {
+      "version": "https://github.com/CristianQiu/Unity-URP-Volumetric-Light.git#ea889ab041bf1d4110ecf431a8488220a86fac9d",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ea889ab041bf1d4110ecf431a8488220a86fac9d"
     }
   }
 }
