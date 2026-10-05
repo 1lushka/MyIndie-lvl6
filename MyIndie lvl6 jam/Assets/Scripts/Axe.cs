@@ -30,6 +30,8 @@ public class Axe : MonoBehaviour
     private float lastHitTime = -999f;
     private Vector3 arcStart;
 
+    public bool IsFlying => isThrown;
+
     private void Awake()
     {
         arcStart = transform.position;
