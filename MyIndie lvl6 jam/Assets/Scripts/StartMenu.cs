@@ -28,4 +28,15 @@ public class StartMenu : MonoBehaviour
     {
         SceneManager.LoadScene(gameSceneName);
     }
+
+    public void ExitGame()
+    {
+        Debug.Log("Выход из игры");
+
+#if UNITY_EDITOR
+        //UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 }
